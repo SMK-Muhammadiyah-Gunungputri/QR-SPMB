@@ -1,12 +1,147 @@
-logo.onload = function() {
-  const size = canvas.width * 0.2; // logo 20% dari QR
-  const x = (canvas.width - size) / 2;
-  const y = (canvas.height - size) / 2;
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Code Pendaftaran SMK Muhammadiyah Gunung Putri</title>
 
-  // gambar kotak putih sebagai background logo
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(x - 5, y - 5, size + 10, size + 10);
+  <!-- Library QR modern -->
+  <script src="https://unpkg.com/qr-code-styling/lib/qr-code-styling.js"></script>
 
-  // gambar logo di atas kotak putih
-  ctx.drawImage(logo, x, y, size, size);
-};
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f2f7ff, #dbeafe);
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px 20px;
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #0b2c6b;
+    }
+
+    p {
+      color: #4b5563;
+      margin-bottom: 25px;
+      font-size: 15px;
+    }
+
+    #qrcode {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .btn-download {
+      margin-top: 20px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 12px;
+      background: #0b2c6b;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-download:hover {
+      background: #123b8a;
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .frame {
+      display: inline-block;
+      padding: 18px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #0b2c6b, #1d4ed8);
+      box-shadow: 0 12px 30px rgba(29, 78, 216, 0.25);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>QR Code Pendaftaran</h1>
+    <p>SMK Muhammadiyah Gunung Putri</p>
+
+    <div class="frame">
+      <div id="qrcode"></div>
+    </div>
+
+    <button class="btn-download" onclick="downloadQR()">Download QR Code</button>
+
+    <div class="footer">
+      Scan untuk menuju halaman pendaftaran online
+    </div>
+  </div>
+
+  <script>
+    const url = "https://smk-muhammadiyah-gunungputri.github.io/SPMB/";
+
+    const qrCode = new QRCodeStyling({
+      width: 320,
+      height: 320,
+      type: "canvas",
+      data: url,
+      image: "logosmk.png", // pastikan file logo ada
+      margin: 8,
+      qrOptions: {
+        typeNumber: 0,
+        mode: "Byte",
+        errorCorrectionLevel: "H"
+      },
+
+      imageOptions: {
+        hideBackgroundDots: true,
+        imageSize: 0.26,   // logo diperbesar
+        margin: 10,        // jarak agar tidak menumpuk
+        crossOrigin: "anonymous"
+      },
+
+      dotsOptions: {
+        color: "#0b1f8f",
+        type: "rounded" // motif titik bulat unik
+      },
+
+      backgroundOptions: {
+        color: "#ffffff"
+      },
+
+      cornersSquareOptions: {
+        color: "#0b1f8f",
+        type: "extra-rounded" // sudut besar modern
+      },
+
+      cornersDotOptions: {
+        color: "#1d4ed8",
+        type: "dot"
+      }
+    });
+
+    qrCode.append(document.getElementById("qrcode"));
+
+    function downloadQR() {
+      qrCode.download({ name: "qr-pendaftaran-smk", extension: "png" });
+    }
+  </script>
+
+</body>
+</html>
