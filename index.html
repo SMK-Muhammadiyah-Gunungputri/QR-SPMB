@@ -96,26 +96,20 @@
   <script>
     const url = "https://smk-muhammadiyah-gunungputri.github.io/SPMB/";
 
-    const qrCode = new QRCodeStyling({
-      width: 320,
-      height: 320,
-      type: "canvas",
-      data: url,
-      image: "logosmk.png", // pastikan file logo ada
-      margin: 8,
-      qrOptions: {
-        typeNumber: 0,
-        mode: "Byte",
-        errorCorrectionLevel: "H"
-      },
-
-      imageOptions: {
-        hideBackgroundDots: true,
-        imageSize: 0.26,   // logo diperbesar
-        margin: 10,        // jarak agar tidak menumpuk
-        crossOrigin: "anonymous"
-      },
-
+   const qrCode = new QRCodeStyling({
+  width: 320,
+  height: 320,
+  data: url,
+  image: "logosmk.png",
+  qrOptions: {
+    errorCorrectionLevel: "H"
+  },
+  imageOptions: {
+    imageSize: 0.25,
+    margin: 8,
+    hideBackgroundDots: true,
+    crossOrigin: "anonymous"
+  }
       dotsOptions: {
         color: "#0b1f8f",
         type: "rounded" // motif titik bulat unik
