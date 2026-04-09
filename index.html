@@ -96,7 +96,7 @@
   <script>
     const url = "https://smk-muhammadiyah-gunungputri.github.io/SPMB/";
 
-   const qrCode = new QRCodeStyling({
+ const qrCode = new QRCodeStyling({
   width: 320,
   height: 320,
   data: url,
@@ -109,26 +109,23 @@
     margin: 8,
     hideBackgroundDots: true,
     crossOrigin: "anonymous"
+  },
+  dotsOptions: {
+    color: "#0b1f8f",
+    type: "rounded"
+  },
+  backgroundOptions: {
+    color: "#ffffff"
+  },
+  cornersSquareOptions: {
+    color: "#0b1f8f",
+    type: "extra-rounded"
+  },
+  cornersDotOptions: {
+    color: "#1d4ed8",
+    type: "dot"
   }
-      dotsOptions: {
-        color: "#0b1f8f",
-        type: "rounded" // motif titik bulat unik
-      },
-
-      backgroundOptions: {
-        color: "#ffffff"
-      },
-
-      cornersSquareOptions: {
-        color: "#0b1f8f",
-        type: "extra-rounded" // sudut besar modern
-      },
-
-      cornersDotOptions: {
-        color: "#1d4ed8",
-        type: "dot"
-      }
-    });
+});
 
     qrCode.append(document.getElementById("qrcode"));
 
