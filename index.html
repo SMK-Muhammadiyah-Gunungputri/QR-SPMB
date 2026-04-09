@@ -93,46 +93,50 @@
     </div>
   </div>
 
-  <script>
-    const url = "https://smk-muhammadiyah-gunungputri.github.io/SPMB/";
+  <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
 
- const qrCode = new QRCodeStyling({
-  width: 320,
-  height: 320,
-  data: url,
-  image: "logosmk.png",
-  qrOptions: {
-    errorCorrectionLevel: "H"
-  },
-  imageOptions: {
-    imageSize: 0.25,
-    margin: 8,
-    hideBackgroundDots: true,
-    crossOrigin: "anonymous"
-  },
-  dotsOptions: {
-    color: "#0b1f8f",
-    type: "rounded"
-  },
-  backgroundOptions: {
-    color: "#ffffff"
-  },
-  cornersSquareOptions: {
-    color: "#0b1f8f",
-    type: "extra-rounded"
-  },
-  cornersDotOptions: {
-    color: "#1d4ed8",
-    type: "dot"
-  }
-});
+<script>
+  const url = "https://smk-muhammadiyah-gunungputri.github.io/SPMB/";
 
-    qrCode.append(document.getElementById("qrcode"));
-
-    function downloadQR() {
-      qrCode.download({ name: "qr-pendaftaran-smk", extension: "png" });
+  const qrCode = new QRCodeStyling({
+    width: 320,
+    height: 320,
+    data: url,
+    image: "https://smk-muhammadiyah-gunungputri.github.io/SPMB/logosmk.png",
+    qrOptions: {
+      errorCorrectionLevel: "H"
+    },
+    imageOptions: {
+      imageSize: 0.25,
+      margin: 8,
+      hideBackgroundDots: true,
+      crossOrigin: "anonymous"
+    },
+    dotsOptions: {
+      color: "#0b1f8f",
+      type: "rounded"
+    },
+    backgroundOptions: {
+      color: "#ffffff"
+    },
+    cornersSquareOptions: {
+      color: "#0b1f8f",
+      type: "extra-rounded"
+    },
+    cornersDotOptions: {
+      color: "#1d4ed8",
+      type: "dot"
     }
-  </script>
+  });
+
+  window.onload = function () {
+    qrCode.append(document.getElementById("qrcode"));
+  };
+
+  function downloadQR() {
+    qrCode.download({ name: "qr-pendaftaran-smk", extension: "png" });
+  }
+</script>
 
 </body>
 </html>
